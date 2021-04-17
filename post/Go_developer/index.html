@@ -1,0 +1,362 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2020 Go 开发者学习路线 | 青木森林魔法学院</title><meta name="keywords" content="GO,开发者,学习路线"><meta name="author" content="青木"><meta name="copyright" content="青木"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Go 开发者路线图 由于Github 在正常人模式访问速度捉急，所以搬运到这里来，这里好找   原地址: https:&#x2F;&#x2F;github.com&#x2F;Alikhll&#x2F;golang-developer-roadmap   在 2020年 成为一名 Go 开发者的路线图：   在下边有一个路线图，如果你想要成为一名Go语言的开发者的话，你可以沿着这张图里面的路径去学习，里面记录了一些你可能也想学习的库。当你">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020 Go 开发者学习路线">
+<meta property="og:url" content="http://home.guoxy.top/post/Go_developer/index.html">
+<meta property="og:site_name" content="青木森林魔法学院">
+<meta property="og:description" content="Go 开发者路线图 由于Github 在正常人模式访问速度捉急，所以搬运到这里来，这里好找   原地址: https:&#x2F;&#x2F;github.com&#x2F;Alikhll&#x2F;golang-developer-roadmap   在 2020年 成为一名 Go 开发者的路线图：   在下边有一个路线图，如果你想要成为一名Go语言的开发者的话，你可以沿着这张图里面的路径去学习，里面记录了一些你可能也想学习的库。当你">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.guoxy.top/img/code.jpeg">
+<meta property="article:published_time" content="2020-05-18T15:00:26.000Z">
+<meta property="article:modified_time" content="2021-04-17T02:55:06.114Z">
+<meta property="article:author" content="青木">
+<meta property="article:tag" content="GO">
+<meta property="article:tag" content="开发者">
+<meta property="article:tag" content="学习路线">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.guoxy.top/img/code.jpeg"><link rel="shortcut icon" href="/picture/touxiang.jpg"><link rel="canonical" href="http://home.guoxy.top/post/Go_developer/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-04-17 10:55:06'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="/picture/touxiang.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music"><i class="fa-fw /music/"></i><span> 0</span></a></li><li><a class="site-page child" href="/Photos"><i class="fa-fw /photos/"></i><span> 1</span></a></li><li><a class="site-page child" href="/Movies"><i class="fa-fw /movies/"></i><span> 2</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pic.guoxy.top/img/code.jpeg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">青木森林魔法学院</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music"><i class="fa-fw /music/"></i><span> 0</span></a></li><li><a class="site-page child" href="/Photos"><i class="fa-fw /photos/"></i><span> 1</span></a></li><li><a class="site-page child" href="/Movies"><i class="fa-fw /movies/"></i><span> 2</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">2020 Go 开发者学习路线</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-05-18T15:00:26.000Z" title="发表于 2020-05-18 23:00:26">2020-05-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-17T02:55:06.114Z" title="更新于 2021-04-17 10:55:06">2021-04-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/GO/">GO</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">829</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="2020 Go 开发者学习路线"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Go-开发者路线图"><a href="#Go-开发者路线图" class="headerlink" title="Go 开发者路线图"></a>Go 开发者路线图</h1><blockquote>
+<p>由于Github 在正常人模式访问速度捉急，所以搬运到这里来，<del>这里好找</del></p>
+</blockquote>
+<blockquote>
+<p>原地址: <a target="_blank" rel="noopener" href="https://github.com/Alikhll/golang-developer-roadmap">https://github.com/Alikhll/golang-developer-roadmap</a></p>
+</blockquote>
+<blockquote>
+<p>在 2020年 成为一名 <a target="_blank" rel="noopener" href="https://golang.org/">Go</a> 开发者的路线图：</p>
+</blockquote>
+<hr>
+<p>在下边有一个路线图，如果你想要成为一名Go语言的开发者的话，你可以沿着这张图里面的路径去学习，里面记录了一些你可能也想学习的库。当你问到：”我想成为一名Go语言开发者，接下来我要学些什么？“，我做的这个路线图就是一个很好的建议。</p>
+<h2 id="免责声明"><a href="#免责声明" class="headerlink" title="免责声明"></a><strong>免责声明</strong></h2><blockquote>
+<p>本路线图的目的是让你看到学习Go语言的一个全景图。在你对接下来要学习什么感到困惑的时候，这个路线图会给你一些指导，而不是鼓励你去选择当下流行的东西。你需要逐渐了解为什么一个工具可能会比另一个工具更适合某些场景。但请记住，流行的东西并不意味着一定适合你的工作。</p>
+</blockquote>
+<h2 id="给我一个-Star！-star"><a href="#给我一个-Star！-star" class="headerlink" title="给我一个 Star！ :star:"></a>给我一个 Star！ :star:</h2><p>如果您喜欢或者正在使用这个项目来学习或者开始你的计划，请给我一个 Star，谢谢！</p>
+<h2 id="路线图"><a href="#路线图" class="headerlink" title="路线图"></a>路线图</h2><p><img src= "/img/loading.gif" data-lazy-src="https://guoxy-common.oss-cn-hangzhou.aliyuncs.com/blog/golang-developer-roadmap.png" alt="Roadmap"></p>
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><ol>
+<li><p>先决条件</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://golangbot.com/">Go</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.w3schools.com/sql/default.asp">SQL</a></li>
+</ul>
+</li>
+<li><p>通用开发技能</p>
+<ul>
+<li>学习GIT，在GitHub上建立一些仓库，与其它人分享你的代码</li>
+<li>了解 HTTP(S) 协议，request 方法（GET, POST, PUT, PATCH, DELETE, OPTIONS）</li>
+<li>不要害怕使用Google，<a target="_blank" rel="noopener" href="http://www.powersearchingwithgoogle.com/">Google 搜索的力量</a></li>
+<li>看一些和数据结构以及算法有关的书籍</li>
+<li>学习关于认证的基础实现</li>
+<li>面向对象原则等等</li>
+</ul>
+</li>
+<li><p>命令行工具</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/spf13/cobra">cobra</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/urfave/cli">urfave/cli</a></li>
+</ol>
+</li>
+<li><p>网页框架 + 路由</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/labstack/echo">Echo</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/astaxie/beego">Beego</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gin-gonic/gin">Gin</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/revel/revel">Revel</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/go-chi/chi">Chi</a></li>
+</ol>
+</li>
+<li><p>数据库</p>
+<ol>
+<li>关系型<ul>
+<li><a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/sql-server/sql-server-2017">SQL Server</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.postgresql.org/">PostgreSQL</a></li>
+<li><a target="_blank" rel="noopener" href="https://mariadb.org/">MariaDB</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.mysql.com/">MySQL</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cockroachlabs.com/">CockroachDB</a></li>
+</ul>
+</li>
+<li>云数据库<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/cosmos-db">CosmosDB</a></li>
+<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/dynamodb/">DynamoDB</a></li>
+</ul>
+</li>
+<li>搜索引擎<ul>
+<li><a target="_blank" rel="noopener" href="https://www.elastic.co/">ElasticSearch</a></li>
+<li><a target="_blank" rel="noopener" href="http://lucene.apache.org/solr/">Solr</a></li>
+<li><a target="_blank" rel="noopener" href="http://sphinxsearch.com/">Sphinx</a></li>
+</ul>
+</li>
+<li>NoSQL<ul>
+<li><a target="_blank" rel="noopener" href="https://www.mongodb.com/">MongoDB</a></li>
+<li><a target="_blank" rel="noopener" href="https://redis.io/">Redis</a></li>
+<li><a target="_blank" rel="noopener" href="http://cassandra.apache.org/">Apache Cassandra</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ravendb/ravendb">RavenDB</a></li>
+<li><a target="_blank" rel="noopener" href="http://couchdb.apache.org/">CouchDB</a></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>对象关系映射框架</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/jinzhu/gorm">Gorm</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/go-xorm/xorm">Xorm</a></li>
+</ol>
+</li>
+<li><p>高速缓存</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/bluele/gcache">GCache</a></li>
+<li>分布式缓存<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/go-redis/redis">Go-Redis</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/bradfitz/gomemcache">GoMemcached</a></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>日志</p>
+<ol>
+<li>日志框架<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/uber-go/zap">Zap</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rs/zerolog">ZeroLog</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/sirupsen/logrus">Logrus</a></li>
+</ul>
+</li>
+<li>日志管理系统<ul>
+<li><a target="_blank" rel="noopener" href="http://sentry.io/">Sentry.io</a></li>
+<li><a target="_blank" rel="noopener" href="https://loggly.com/">Loggly.com</a></li>
+</ul>
+</li>
+<li>分布式追踪<ul>
+<li><a target="_blank" rel="noopener" href="https://www.jaegertracing.io/">Jaeger</a></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>实时通信</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://socket.io/">Socket.IO</a></li>
+</ol>
+</li>
+<li><p>API 客户端</p>
+<ol>
+<li>REST<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/h2non/gentleman">Gentleman</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kennethreitz/grequests">GRequests</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/heimdal/heimdal">heimdall</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://graphql.org/">GraphQL</a><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/99designs/gqlgen">gqlgen</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/graph-gophers/graphql-go">graphql-go</a></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>最好知道</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/chriso/validator.js/">Validator</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/pytorch/glow">Glow</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tidwall/gjson">GJson</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/volatiletech/authboss">Authboss</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ahl5esoft/golang-underscore">Go-Underscore</a></li>
+</ul>
+</li>
+<li><p>测试</p>
+<ol>
+<li>单元、行为和集成测试<ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/golang/mock">GoMock</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/stretchr/testify">Testify</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/onsi/ginkgo">GinkGo</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/onsi/gomega">GoMega</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/go-check/check">GoCheck</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/DATA-DOG/godog">GoDog</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/smartystreets/goconvey">GoConvey</a></li>
+</ol>
+</li>
+<li>端对端测试<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/tebeka/selenium">Selenium</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/viant/endly">Endly</a></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>任务调度</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/roylee0704/gron">Gron</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/bamzi/jobrunner">JobRunner</a></li>
+</ul>
+</li>
+<li><p>微服务</p>
+<ol>
+<li>消息代理<ul>
+<li><a target="_blank" rel="noopener" href="https://www.rabbitmq.com/tutorials/tutorial-one-go.html">RabbitMQ</a></li>
+<li><a target="_blank" rel="noopener" href="https://kafka.apache.org/">Apache Kafka</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/apache/activemq">ActiveMQ</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview">Azure Service Bus</a></li>
+</ul>
+</li>
+<li>构建事件驱动型服务<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ThreeDotsLabs/watermill">Watermill</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/vardius/message-bus">Message-Bus</a></li>
+</ul>
+</li>
+<li>框架<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/go-kit/kit">GoKit</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/micro/go-micro">Micro</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/smallnest/rpcx">rpcx</a></li>
+</ul>
+</li>
+<li>RPC<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/protocolbuffers/protobuf">Protocol Buffers</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/grpc/grpc-go">gRPC-Go</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/grpc-ecosystem/grpc-gateway">gRPC-Gateway</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/twitchtv/twirp">Twirp</a></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/tmrts/go-patterns">Go-模式</a></p>
+</li>
+</ol>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>如果您认为该路线图有待改进，请务必提交PR或者发Issue。当然，我也会持续地改进它，所以你可以给这个仓库点个 Star 以便于再次访问。</p>
+<p>想法来源于 : <a target="_blank" rel="noopener" href="https://github.com/MoienTajik/AspNetCore-Developer-Roadmap">ASP.NET Core Developer Roadmap</a></p>
+<h2 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h2><p>这个路线图是用 <a target="_blank" rel="noopener" href="https://www.draw.io/">Draw.io</a> 做的。项目文件为该仓库下的 <code>golang-developer-roadmap-zh-CN.xml</code> 文件。 您如果想要修改它，您可以进入 <a target="_blank" rel="noopener" href="https://www.draw.io/">Draw.io</a> 点击打开已有图表并且选择这个 <code>xml</code> 文件。它会为您打开这个路线图。改进它，并且上传，以及更新该 ReadMe 中的对应图片，然后提交 PR（以 400% 的缩放导出 PNG 以及使用 <a target="_blank" rel="noopener" href="https://compressor.io/compress">Compressor.io</a> 来压缩它）。</p>
+<ul>
+<li>用 PR 提交改进</li>
+<li>在 Issue 中交流想法</li>
+<li>传播这个图表</li>
+</ul>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p><a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src= "/img/loading.gif" data-lazy-src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg" alt="License: CC BY-NC-SA 4.0"></a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">青木</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://home.guoxy.top/post/Go_developer/">http://home.guoxy.top/post/Go_developer/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://home.guoxy.top" target="_blank">青木森林魔法学院</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/GO/">GO</a><a class="post-meta__tags" href="/tags/%E5%BC%80%E5%8F%91%E8%80%85/">开发者</a><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">学习路线</a></div><div class="post_share"><div class="social-share" data-image="https://pic.guoxy.top/img/code.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/post/HashInGoAndRedis/"><img class="prev-cover" data-lazy-src="https://static.guoxy.top/img/image-20200617115140687.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Go和Redis中的Hash</div></div></a></div><div class="next-post pull-right"><a href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"><img class="next-cover" data-lazy-src="https://pic.guoxy.top/img/code.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计算机网络要点</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/picture/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">青木</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/kingcanfish"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/kingcanfish" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:gxylong@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://www.instagram.com/kuoisguo/" target="_blank" title=""><i class="fab fa-instagram"></i></a><a class="social-icon" href="https://weibo.com/u/5591009879" target="_blank" title=""><i class="fab fa-weibo"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">朝着太阳生长 <br> 做一个温暖的人 <br> 不卑不亢 清澈善良</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Go-%E5%BC%80%E5%8F%91%E8%80%85%E8%B7%AF%E7%BA%BF%E5%9B%BE"><span class="toc-number">1.</span> <span class="toc-text">Go 开发者路线图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E"><span class="toc-number">1.1.</span> <span class="toc-text">免责声明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%99%E6%88%91%E4%B8%80%E4%B8%AA-Star%EF%BC%81-star"><span class="toc-number">1.2.</span> <span class="toc-text">给我一个 Star！ :star:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%BA%BF%E5%9B%BE"><span class="toc-number">1.3.</span> <span class="toc-text">路线图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%84%E6%BA%90"><span class="toc-number">1.4.</span> <span class="toc-text">资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-number">1.5.</span> <span class="toc-text">最后</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%A1%E7%8C%AE"><span class="toc-number">1.6.</span> <span class="toc-text">贡献</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#License"><span class="toc-number">1.7.</span> <span class="toc-text">License</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/post/hello-world/" title="Hello World"><img data-lazy-src="https://pic.guoxy.top/img/code.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/post/hello-world/" title="Hello World">Hello World</a><time datetime="2021-04-17T03:01:05.693Z" title="发表于 2021-04-17 11:01:05">2021-04-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/2020/" title="2020 杂事随记"><img data-lazy-src="https://pic.guoxy.top/img/dvoe.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2020 杂事随记"/></a><div class="content"><a class="title" href="/post/2020/" title="2020 杂事随记">2020 杂事随记</a><time datetime="2020-12-26T15:58:36.000Z" title="发表于 2020-12-26 23:58:36">2020-12-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/%E9%80%81%E7%BB%99%E9%93%B6%E6%B2%B3%E7%B3%BB%E4%B9%8B%E5%A4%96%E7%9A%84%E4%BD%A0/" title="送给银河系之外的你"><img data-lazy-src="https://pic.guoxy.top/img/dvoe.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="送给银河系之外的你"/></a><div class="content"><a class="title" href="/post/%E9%80%81%E7%BB%99%E9%93%B6%E6%B2%B3%E7%B3%BB%E4%B9%8B%E5%A4%96%E7%9A%84%E4%BD%A0/" title="送给银河系之外的你">送给银河系之外的你</a><time datetime="2020-12-24T14:45:00.000Z" title="发表于 2020-12-24 22:45:00">2020-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/go_mutex/" title="【转】GO：sync.Mutex 的实现与演进"><img data-lazy-src="https://pic.guoxy.top/img/mutex.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【转】GO：sync.Mutex 的实现与演进"/></a><div class="content"><a class="title" href="/post/go_mutex/" title="【转】GO：sync.Mutex 的实现与演进">【转】GO：sync.Mutex 的实现与演进</a><time datetime="2020-12-09T06:31:00.000Z" title="发表于 2020-12-09 14:31:00">2020-12-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/raft-cn/" title="Raft算法经典论文翻译"><img data-lazy-src="https://pic.guoxy.top/img/raft.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Raft算法经典论文翻译"/></a><div class="content"><a class="title" href="/post/raft-cn/" title="Raft算法经典论文翻译">Raft算法经典论文翻译</a><time datetime="2020-12-05T11:46:00.000Z" title="发表于 2020-12-05 19:46:00">2020-12-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2021 By 青木</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

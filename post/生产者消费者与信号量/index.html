@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>生产者消费者模型与信号量 | 青木森林魔法学院</title><meta name="keywords" content="操作系统,线程,信号量"><meta name="author" content="青木"><meta name="copyright" content="青木"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="最近在看操作系统有关线程同步的章节,关于 信号量 , 条件变量 , 互斥量 之间的具体区别有点分不清楚,所以在这里记录一下 信号量 , 条件变量, 互斥量首先信号量,条件变量,互斥量都是有关操作系统线程同步的有关知识,我相信在每一本操作系统教材上都有提到过,下面我写一下我自己理解  互斥量 : 互斥量总是和互斥锁相联系,我们所说的互斥锁本质上就是锁住一个互斥量,所以互斥量只有两种情况 被上锁状态">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生产者消费者模型与信号量">
+<meta property="og:url" content="http://home.guoxy.top/post/%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E4%B8%8E%E4%BF%A1%E5%8F%B7%E9%87%8F/index.html">
+<meta property="og:site_name" content="青木森林魔法学院">
+<meta property="og:description" content="最近在看操作系统有关线程同步的章节,关于 信号量 , 条件变量 , 互斥量 之间的具体区别有点分不清楚,所以在这里记录一下 信号量 , 条件变量, 互斥量首先信号量,条件变量,互斥量都是有关操作系统线程同步的有关知识,我相信在每一本操作系统教材上都有提到过,下面我写一下我自己理解  互斥量 : 互斥量总是和互斥锁相联系,我们所说的互斥锁本质上就是锁住一个互斥量,所以互斥量只有两种情况 被上锁状态">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.guoxy.top/img/code.jpeg">
+<meta property="article:published_time" content="2020-09-25T23:35:26.000Z">
+<meta property="article:modified_time" content="2021-04-17T02:55:06.114Z">
+<meta property="article:author" content="青木">
+<meta property="article:tag" content="操作系统">
+<meta property="article:tag" content="线程">
+<meta property="article:tag" content="信号量">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.guoxy.top/img/code.jpeg"><link rel="shortcut icon" href="/picture/touxiang.jpg"><link rel="canonical" href="http://home.guoxy.top/post/%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E4%B8%8E%E4%BF%A1%E5%8F%B7%E9%87%8F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":100,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-04-17 10:55:06'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="/picture/touxiang.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music"><i class="fa-fw /music/"></i><span> 0</span></a></li><li><a class="site-page child" href="/Photos"><i class="fa-fw /photos/"></i><span> 1</span></a></li><li><a class="site-page child" href="/Movies"><i class="fa-fw /movies/"></i><span> 2</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pic.guoxy.top/img/code.jpeg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">青木森林魔法学院</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/Music"><i class="fa-fw /music/"></i><span> 0</span></a></li><li><a class="site-page child" href="/Photos"><i class="fa-fw /photos/"></i><span> 1</span></a></li><li><a class="site-page child" href="/Movies"><i class="fa-fw /movies/"></i><span> 2</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">生产者消费者模型与信号量</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-09-25T23:35:26.000Z" title="发表于 2020-09-26 07:35:26">2020-09-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-17T02:55:06.114Z" title="更新于 2021-04-17 10:55:06">2021-04-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="生产者消费者模型与信号量"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>最近在看操作系统有关线程同步的章节,关于 <code>信号量</code> , <code>条件变量</code> , <code>互斥量</code> 之间的具体区别有点分不清楚,所以在这里记录一下</p>
+<h2 id="信号量-条件变量-互斥量"><a href="#信号量-条件变量-互斥量" class="headerlink" title="信号量 , 条件变量, 互斥量"></a>信号量 , 条件变量, 互斥量</h2><p>首先信号量,条件变量,互斥量都是有关操作系统线程同步的有关知识,我相信在每一本操作系统教材上都有提到过,下面我写一下我自己理解</p>
+<ul>
+<li><code>互斥量</code> : 互斥量总是和互斥锁相联系,我们所说的互斥锁本质上就是锁住一个互斥量,所以互斥量只有两种情况<ul>
+<li>被上锁状态</li>
+<li>解锁状态</li>
+<li>所以就可以用<code>0</code> , <code>-1</code>  表示 , <code>0</code> 表示自由, 没有被上锁, <code>-1</code> 表示已经被上锁</li>
+</ul>
+</li>
+<li><code>信号量</code>:  信号量(Semaphore)，有时被称为信号灯，是在多线程环境下使用的一种设施，是可以用来保证两个或多个关键代码段不被<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B9%B6%E5%8F%91/11024806">并发</a>调用。在进入一个关键代码段之前，线程必须获取一个信号量；一旦该关键代码段完成了，那么该线程必须释放信号量。<ul>
+<li>按我的理解,信号量就是用来表示某个资源可以被其他线程同时获取的数量, 比如信号量为 5,可以允许对做5个线程对资源进行获取,当然每个线程获取之前,必须将信号量减一, 而每个线程释放之后,有必须将信号量加一,以供其他资源获取.</li>
+<li>当信号量初始化最大为1时,此时只允许同时有一个线程对资源进行操作, 那么也就是互斥了,那么这就形成了一把互斥锁,所以 <code>二值信号量</code> 我们可以当做一把锁来用 . </li>
+</ul>
+</li>
+<li><code>条件变量</code> : 条件变量 ( cond ) 是在多线程程序中用来实现”等待 –&gt; 唤醒” 逻辑常用的方法。条件变量利用线程间共享的全局变量进行同步的一种机制，主要包括两个动作：一个线程等待”条件变量的条件成立”而挂起；另一个线程使“条件成立”。为了防止竞争，条件变量的使用总是和一个互斥锁结合在一起。线程在改变条件状态前必须首先锁住互斥量，函数 pthread_cond_wait 把自己放到等待条件的线程列表上，然后对互斥锁解锁(这两个操作是原子操作)。在函数返回时，互斥量再次被锁住。<ul>
+<li>众所周知,如果要防止多个线程对资源进行竞争, 最简单粗暴的方法就是对该资源进行上锁,但是用个问题,一旦 某个线程想要获取某个上锁的线程,它只能 <code>等待</code> -&gt; <code>尝试获取</code> -&gt; <code>失败</code> -&gt; <code>尝试获取</code> -&gt; <code>等待</code> ,如此的循环自旋是比较消耗 CPU 资源的,所以就需要条件变量.</li>
+<li>条件变量的作用就是让获取不过锁的线程休眠,然后在释放 锁/条件变量 的时候唤醒休眠的线程.</li>
+<li>所以条件变量 = 上锁/解锁 + 休眠/唤醒 线程的组合操作 , 它把这两个操作放在一起,构成了一个原子操作.</li>
+</ul>
+</li>
+<li><strong>互斥量是信号量的一种特例，互斥量的本质是一把锁。A mutex is basically a lock that we set (lock) before accessing a shared resource and release (unlock) when we’re done</strong></li>
+</ul>
+<h2 id="基于信号量的生产者消费者模型"><a href="#基于信号量的生产者消费者模型" class="headerlink" title="基于信号量的生产者消费者模型"></a>基于信号量的生产者消费者模型</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;semaphore.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">sem_t</span> empty,full;</span><br><span class="line"></span><br><span class="line"><span class="keyword">pthread_mutex_t</span> mutex;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> buffer_count = <span class="number">0</span>; <span class="comment">//全局变量,管道内 产品数目大小</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">producer</span> <span class="params">(<span class="keyword">void</span> *arg)</span></span>; <span class="comment">//定义生产者</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">consumer</span> <span class="params">(<span class="keyword">void</span> *arg)</span></span>; <span class="comment">// 定义消费者</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span> </span>&#123;</span><br><span class="line">    srand((<span class="keyword">unsigned</span>)time(<span class="literal">NULL</span>));  <span class="comment">//初始化随机种子</span></span><br><span class="line">    <span class="keyword">pthread_t</span> p_prod; <span class="comment">// 生产者线程</span></span><br><span class="line">    <span class="keyword">pthread_t</span> p_cons; <span class="comment">// 消费者线程</span></span><br><span class="line">    pthread_mutex_init(&amp;mutex, <span class="literal">NULL</span>); <span class="comment">//  初始化互斥量</span></span><br><span class="line">    sem_init(&amp;full,<span class="number">0</span>, <span class="number">0</span>);  <span class="comment">//初始化 full 信号量</span></span><br><span class="line">    sem_init(&amp;empty, <span class="number">0</span> ,<span class="number">5</span> ); <span class="comment">// 初始化 empty empty 信号量</span></span><br><span class="line">    <span class="comment">// 创建生产者和消费者线程</span></span><br><span class="line">    <span class="keyword">if</span> (pthread_create(&amp;p_prod, <span class="literal">NULL</span>, producer, <span class="literal">NULL</span>) != <span class="number">0</span>) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;thread producter create failed. \n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (pthread_create(&amp;p_cons, <span class="literal">NULL</span>, consumer, <span class="literal">NULL</span>) != <span class="number">0</span>) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;thread consumer create failed. \n&quot;</span>);       </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    pthread_join(p_cons, <span class="literal">NULL</span>);</span><br><span class="line">    pthread_join(p_prod, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">producer</span><span class="params">(<span class="keyword">void</span> *arg)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        sem_wait(&amp;empty); <span class="comment">// wait 使 empty 信号量 减1 ,当empty 减为 -1 时,线程休眠</span></span><br><span class="line">        pthread_mutex_lock(&amp;mutex);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;producer put an element..&quot;</span>);</span><br><span class="line">        buffer_count++;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;now buffer_count is %d\n&quot;</span>, buffer_count);</span><br><span class="line">        pthread_mutex_unlock(&amp;mutex);</span><br><span class="line">        sem_post(&amp;full); <span class="comment">// post 使 full 信号量加1 唤醒消费者可以消费</span></span><br><span class="line">        sleep(rand() % <span class="number">3</span> ); <span class="comment">//用于三秒内随机控制时间</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">consumer</span> <span class="params">(<span class="keyword">void</span> *arg)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        sem_wait(&amp;full); <span class="comment">// wait 使 full 信号量 减一 ,为-1 时 说明 负的full 就是 empty 所以休眠</span></span><br><span class="line">        pthread_mutex_lock(&amp;mutex);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;consumer get an element..&quot;</span>);</span><br><span class="line">        buffer_count--;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;now buffer_count is %d\n&quot;</span>, buffer_count);</span><br><span class="line">        pthread_mutex_unlock(&amp;mutex);</span><br><span class="line">        sem_post(&amp;empty); <span class="comment">// post 使 empty 信号量 加1 ,生产者可以生产</span></span><br><span class="line">        sleep(rand() % <span class="number">3</span>);<span class="comment">//用于三秒内随机控制时间</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行结果:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">consumer get an element..now buffer_count is 0</span><br><span class="line">producer put an element..now buffer_count is 1</span><br><span class="line">producer put an element..now buffer_count is 2</span><br><span class="line">consumer get an element..now buffer_count is 1</span><br><span class="line">consumer get an element..now buffer_count is 0</span><br><span class="line">producer put an element..now buffer_count is 1</span><br><span class="line">consumer get an element..now buffer_count is 0</span><br><span class="line">producer put an element..now buffer_count is 1</span><br><span class="line">consumer get an element..now buffer_count is 0</span><br><span class="line">producer put an element..now buffer_count is 1</span><br><span class="line">producer put an element..now buffer_count is 2</span><br><span class="line">producer put an element..now buffer_count is 3</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">青木</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://home.guoxy.top/post/%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E4%B8%8E%E4%BF%A1%E5%8F%B7%E9%87%8F/">http://home.guoxy.top/post/%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E4%B8%8E%E4%BF%A1%E5%8F%B7%E9%87%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://home.guoxy.top" target="_blank">青木森林魔法学院</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a><a class="post-meta__tags" href="/tags/%E7%BA%BF%E7%A8%8B/">线程</a><a class="post-meta__tags" href="/tags/%E4%BF%A1%E5%8F%B7%E9%87%8F/">信号量</a></div><div class="post_share"><div class="social-share" data-image="https://pic.guoxy.top/img/code.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/post/learnlist/"><img class="prev-cover" data-lazy-src="https://pic.guoxy.top/img/code.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">一些学习知识点</div></div></a></div><div class="next-post pull-right"><a href="/post/goroutine/"><img class="next-cover" data-lazy-src="https://static.guoxy.top/img/goroutine/88.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Golang 调度器 GMP 原理与调度全分析</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/post/learnlist/" title="一些学习知识点"><img class="cover" data-lazy-src="https://pic.guoxy.top/img/code.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-22</div><div class="title">一些学习知识点</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/picture/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">青木</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">50</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/kingcanfish"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/kingcanfish" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:gxylong@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://www.instagram.com/kuoisguo/" target="_blank" title=""><i class="fab fa-instagram"></i></a><a class="social-icon" href="https://weibo.com/u/5591009879" target="_blank" title=""><i class="fab fa-weibo"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">朝着太阳生长 <br> 做一个温暖的人 <br> 不卑不亢 清澈善良</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F-%E6%9D%A1%E4%BB%B6%E5%8F%98%E9%87%8F-%E4%BA%92%E6%96%A5%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text">信号量 , 条件变量, 互斥量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E4%BF%A1%E5%8F%B7%E9%87%8F%E7%9A%84%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">基于信号量的生产者消费者模型</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/post/hello-world/" title="Hello World"><img data-lazy-src="https://pic.guoxy.top/img/code.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/post/hello-world/" title="Hello World">Hello World</a><time datetime="2021-04-17T03:01:05.693Z" title="发表于 2021-04-17 11:01:05">2021-04-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/2020/" title="2020 杂事随记"><img data-lazy-src="https://pic.guoxy.top/img/dvoe.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2020 杂事随记"/></a><div class="content"><a class="title" href="/post/2020/" title="2020 杂事随记">2020 杂事随记</a><time datetime="2020-12-26T15:58:36.000Z" title="发表于 2020-12-26 23:58:36">2020-12-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/%E9%80%81%E7%BB%99%E9%93%B6%E6%B2%B3%E7%B3%BB%E4%B9%8B%E5%A4%96%E7%9A%84%E4%BD%A0/" title="送给银河系之外的你"><img data-lazy-src="https://pic.guoxy.top/img/dvoe.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="送给银河系之外的你"/></a><div class="content"><a class="title" href="/post/%E9%80%81%E7%BB%99%E9%93%B6%E6%B2%B3%E7%B3%BB%E4%B9%8B%E5%A4%96%E7%9A%84%E4%BD%A0/" title="送给银河系之外的你">送给银河系之外的你</a><time datetime="2020-12-24T14:45:00.000Z" title="发表于 2020-12-24 22:45:00">2020-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/go_mutex/" title="【转】GO：sync.Mutex 的实现与演进"><img data-lazy-src="https://pic.guoxy.top/img/mutex.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【转】GO：sync.Mutex 的实现与演进"/></a><div class="content"><a class="title" href="/post/go_mutex/" title="【转】GO：sync.Mutex 的实现与演进">【转】GO：sync.Mutex 的实现与演进</a><time datetime="2020-12-09T06:31:00.000Z" title="发表于 2020-12-09 14:31:00">2020-12-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/raft-cn/" title="Raft算法经典论文翻译"><img data-lazy-src="https://pic.guoxy.top/img/raft.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Raft算法经典论文翻译"/></a><div class="content"><a class="title" href="/post/raft-cn/" title="Raft算法经典论文翻译">Raft算法经典论文翻译</a><time datetime="2020-12-05T11:46:00.000Z" title="发表于 2020-12-05 19:46:00">2020-12-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2021 By 青木</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
