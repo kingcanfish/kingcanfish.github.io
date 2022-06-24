@@ -4,23 +4,16 @@
         <link>http://blog.gxy.plus/</link>
         <description>青木的小屋--这里存放了一些闪光、思考和碎碎念</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>me@gxy.plus (青木)</managingEditor>
-            <webMaster>me@gxy.plus (青木)</webMaster><lastBuildDate>Fri, 24 Jun 2022 13:56:27 &#43;0800</lastBuildDate>
+            <webMaster>me@gxy.plus (青木)</webMaster><lastBuildDate>Fri, 24 Jun 2022 14:29:03 &#43;0800</lastBuildDate>
             <atom:link href="http://blog.gxy.plus/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>F</title>
-    <link>http://blog.gxy.plus/posts/f/</link>
-    <pubDate>Fri, 24 Jun 2022 13:56:27 &#43;0800</pubDate>
+    <title>Hello</title>
+    <link>http://blog.gxy.plus/posts/hello/</link>
+    <pubDate>Fri, 24 Jun 2022 14:29:03 &#43;0800</pubDate>
     <author>青木</author>
-    <guid>http://blog.gxy.plus/posts/f/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>asdas</title>
-    <link>http://blog.gxy.plus/posts/first_post/</link>
-    <pubDate>Fri, 24 Jun 2022 09:32:35 &#43;0800</pubDate>
-    <author>青木</author>
-    <guid>http://blog.gxy.plus/posts/first_post/</guid>
-    <description><![CDATA[]]></description>
+    <guid>http://blog.gxy.plus/posts/hello/</guid>
+    <description><![CDATA[<p></p>
+]]></description>
 </item>
 </channel>
 </rss>
