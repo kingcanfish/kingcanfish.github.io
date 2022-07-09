@@ -4,7 +4,53 @@
         <link>http://blog.gxy.plus/posts/</link>
         <description>All Posts | 青木森林魔法小屋</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>me@gxy.plus (青木)</managingEditor>
-            <webMaster>me@gxy.plus (青木)</webMaster><lastBuildDate>Fri, 24 Jun 2022 14:29:03 &#43;0800</lastBuildDate><atom:link href="http://blog.gxy.plus/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>me@gxy.plus (青木)</webMaster><lastBuildDate>Fri, 01 Jul 2022 09:02:29 &#43;0800</lastBuildDate><atom:link href="http://blog.gxy.plus/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Cow Lab</title>
+    <link>http://blog.gxy.plus/posts/cow-lab/</link>
+    <pubDate>Fri, 01 Jul 2022 09:02:29 &#43;0800</pubDate>
+    <author>青木</author>
+    <guid>http://blog.gxy.plus/posts/cow-lab/</guid>
+    <description><![CDATA[<h1 id="lab-copy-on-write-fork-for-xv6">Lab: Copy-on-Write Fork for xv6</h1>
+<p>虚拟内存机制提供了一层中间层：内核可以通过标记PTE设置为不合法或者只读的方式来拦截物理内存引用，这将导致段错误（page faults）, 然后通过重新修改PTE条目来改变地址应用的真正含义。计算机系统中有这么一句话：任何系统的问题都可以在中间增加一层抽象来解决。<code>lazy allocation</code> 实验已经提供了一个例子。这个实验也可以作为另外一个例子来探讨：写时复制。</p>
+<h2 id="the-problem">The problem</h2>
+<p>xv6 中的 <code>fork()</code> 系统调用拷贝了父进程用户空间内存到子进程中。如果父进程用户空间内存非常大，拷贝操作会花费很长的时间。更糟糕的是，这项工作通常是一种巨大的浪费；例如，在执行<code>fork()</code> 函数之后接着执行<code>exec()</code> 函数的情况下，子进程会丢弃所有经过拷贝的内存，这些内存可能根本不会被用上。从另一方面来说，如果父进程和子进程使用同一个内存页，当其中一个进程或者两个进程都发生写行为时，再对内存页进行拷贝才是真正需要的。</p>
+<h2 id="the-solution">The solution</h2>
+<p>写时复制fork()[ copy-on-write (COW) fork()] 的目的是为了延迟申请和拷贝物理内存页的时机，直到子进程真正需要，否则就进行真正的申请和拷贝</p>
+<p><code>COW fork()</code> 只是给子进程创建一个页表，其中页表条目指向父进程的内存页。<code>COW fork()</code> 将子进程和父进程的所有页表项都标记为不可写的。当其中一个进程想要在这些内存页上进行写操作，CPU 会强制发生页错误。内核的页错误处理程序察觉到这一情况后，会为造成页错误的进程重新申请内存页，拷贝原来内存页的内容到新的页面，然后修改该进程的PTE重新指向新的页面，同时将PTE标记为可写的。当页错误处理函数返回时，用户进程将能够在新的页面进行写操作。</p>
+<h2 id="implement-copy-on-writehardhttpspdoscsailmitedu6s0812021labsguidancehtml">Implement copy-on write(<a href="https://pdos.csail.mit.edu/6.S081/2021/labs/guidance.html" target="_blank" rel="noopener noreffer ">hard</a>)</h2>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Tip<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">你的任务是在 <code>xv6 kernel</code> 中 实现<code>copy on write fork</code>  如果你修改过内核的话，成功通过<code>cowtest</code> 和 <code>usertest</code> 的话就算完成</div>
+        </div>
+    </div>
+<p>为了帮助你测试你的实现，我们提供了一个 xv6 程序叫做 <code>cowtest</code> （source in user/cowtest.c）<code>cowtest</code> 运行各种各样的测试，但是如果你没有修改过 <code>xv6</code> ，它将会运行失败，首先，你将会看到：</p>
+<pre tabindex="0"><code>$ cowtest
+simple: fork() failed
+$ 
+</code></pre><p><code>simple</code> 测试分配超过一半的可用物理内存，然后调用函数。fork 失败是因为没有足够的空闲物理内存给子进程拷贝一个完整的父进程内存的完整副本。</p>
+<p>当你完成之后，你的内核应该以下通过 <code>cowtest</code> 和 <code>usertest</code> 中的所有测试：</p>
+<pre><code>$ cowtest
+simple: ok
+simple: ok
+three: zombie!
+ok
+three: zombie!
+ok
+three: zombie!
+ok
+file: ok
+ALL COW TESTS PASSED
+$ usertests
+...
+ALL TESTS PASSED
+$
+</code></pre>
+]]></description>
+</item>
+<item>
     <title>Hello</title>
     <link>http://blog.gxy.plus/posts/hello/</link>
     <pubDate>Fri, 24 Jun 2022 14:29:03 &#43;0800</pubDate>

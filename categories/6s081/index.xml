@@ -1,12 +1,10 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>青木森林魔法小屋</title>
-        <link>http://blog.gxy.plus/</link>
-        <description>青木的小屋--这里存放了一些闪光、思考和碎碎念</description>
+        <title>6s081 - Category - 青木森林魔法小屋</title>
+        <link>http://blog.gxy.plus/categories/6s081/</link>
+        <description>6s081 - Category - 青木森林魔法小屋</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>me@gxy.plus (青木)</managingEditor>
-            <webMaster>me@gxy.plus (青木)</webMaster><lastBuildDate>Fri, 01 Jul 2022 09:02:29 &#43;0800</lastBuildDate>
-            <atom:link href="http://blog.gxy.plus/index.xml" rel="self" type="application/rss+xml" />
-        <item>
+            <webMaster>me@gxy.plus (青木)</webMaster><lastBuildDate>Fri, 01 Jul 2022 09:02:29 &#43;0800</lastBuildDate><atom:link href="http://blog.gxy.plus/categories/6s081/" rel="self" type="application/rss+xml" /><item>
     <title>Cow Lab</title>
     <link>http://blog.gxy.plus/posts/cow-lab/</link>
     <pubDate>Fri, 01 Jul 2022 09:02:29 &#43;0800</pubDate>
@@ -50,15 +48,6 @@ $ usertests
 ALL TESTS PASSED
 $
 </code></pre>
-]]></description>
-</item>
-<item>
-    <title>Hello</title>
-    <link>http://blog.gxy.plus/posts/hello/</link>
-    <pubDate>Fri, 24 Jun 2022 14:29:03 &#43;0800</pubDate>
-    <author>青木</author>
-    <guid>http://blog.gxy.plus/posts/hello/</guid>
-    <description><![CDATA[<p></p>
 ]]></description>
 </item>
 </channel>
