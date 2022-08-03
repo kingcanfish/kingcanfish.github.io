@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 青木的魔法小屋</title>
+    <link>https://blog.gxy.plus/post/</link>
+    <description>Recent content in Posts on 青木的魔法小屋</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 01 Jul 2022 09:02:29 +0800</lastBuildDate><atom:link href="https://blog.gxy.plus/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cow Lab</title>
+      <link>https://blog.gxy.plus/post/cow-lab/</link>
+      <pubDate>Fri, 01 Jul 2022 09:02:29 +0800</pubDate>
+      
+      <guid>https://blog.gxy.plus/post/cow-lab/</guid>
+      <description>Lab: Copy-on-Write Fork for xv6 虚拟内存机制提供了一层中间层：内核可以通过标记PTE设置为不合法或者只读的方式来拦截物理内存引用，这将导致段错误（page faul</description>
+    </item>
+    
+    <item>
+      <title>Hello</title>
+      <link>https://blog.gxy.plus/post/hello/</link>
+      <pubDate>Fri, 24 Jun 2022 14:29:03 +0800</pubDate>
+      
+      <guid>https://blog.gxy.plus/post/hello/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

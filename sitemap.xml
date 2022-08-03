@@ -1,13 +1,67 @@
-<urlset
-    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-    xmlns:xhtml="http://www.w3.org/1999/xhtml"
-    ><url>
-            <loc>http://blog.gxy.plus/tags/6s081/</loc><lastmod>2022-07-01T09:02:29&#43;08:00</lastmod></url><url>
-            <loc>http://blog.gxy.plus/categories/6s081/</loc><lastmod>2022-07-01T09:02:29&#43;08:00</lastmod></url><url>
-            <loc>http://blog.gxy.plus/categories/</loc><lastmod>2022-07-01T09:02:29&#43;08:00</lastmod></url><url>
-            <loc>http://blog.gxy.plus/posts/cow-lab/</loc><lastmod>2022-07-01T09:02:29&#43;08:00</lastmod></url><url>
-            <loc>http://blog.gxy.plus/posts/</loc><lastmod>2022-07-01T09:02:29&#43;08:00</lastmod></url><url>
-            <loc>http://blog.gxy.plus/tags/</loc><lastmod>2022-07-01T09:02:29&#43;08:00</lastmod></url><url>
-            <loc>http://blog.gxy.plus/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc><lastmod>2022-07-01T09:02:29&#43;08:00</lastmod></url><url>
-            <loc>http://blog.gxy.plus/</loc><lastmod>2022-07-01T09:02:29&#43;08:00</lastmod></url><url>
-            <loc>http://blog.gxy.plus/posts/hello/</loc><lastmod>2022-06-24T14:29:03&#43;08:00</lastmod></url></urlset>
+<?xml-stylesheet type="text/xsl" href="https://blog.gxy.plus/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://blog.gxy.plus/tags/6s081/</loc>
+    <lastmod>2022-07-01T09:02:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.gxy.plus/categories/6s081/</loc>
+    <lastmod>2022-07-01T09:02:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.gxy.plus/categories/</loc>
+    <lastmod>2022-07-01T09:02:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.gxy.plus/post/cow-lab/</loc>
+    <lastmod>2022-07-01T09:02:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.gxy.plus/post/</loc>
+    <lastmod>2022-07-01T09:02:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.gxy.plus/tags/</loc>
+    <lastmod>2022-07-01T09:02:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.gxy.plus/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
+    <lastmod>2022-07-01T09:02:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.gxy.plus/</loc>
+    <lastmod>2022-07-01T09:02:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.gxy.plus/post/hello/</loc>
+    <lastmod>2022-06-24T14:29:03+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+</urlset>
