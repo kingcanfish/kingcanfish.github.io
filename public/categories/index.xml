@@ -1,0 +1,8 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Categories - Category - 青木小屋🏠</title>
+        <link>http://localhost:1313/categories/</link>
+        <description>Categories - Category - 青木小屋🏠</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>me@gxy.plus (kingcanfish)</managingEditor>
+            <webMaster>me@gxy.plus (kingcanfish)</webMaster><copyright>kingcanfish</copyright><atom:link href="http://localhost:1313/categories/" rel="self" type="application/rss+xml" /></channel>
+</rss>

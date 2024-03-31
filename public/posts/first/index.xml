@@ -1,0 +1,8 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>All 又是一个新的开始 - 青木小屋🏠</title>
+        <link>http://localhost:1313/posts/first/</link>
+        <description>All 又是一个新的开始 | 青木小屋🏠</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>me@gxy.plus (kingcanfish)</managingEditor>
+            <webMaster>me@gxy.plus (kingcanfish)</webMaster><copyright>kingcanfish</copyright><lastBuildDate>Sun, 31 Mar 2024 17:56:16 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/posts/first/" rel="self" type="application/rss+xml" /></channel>
+</rss>
