@@ -125,7 +125,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     # Site creation time
     since = 2024
     # ICP info only in China (HTML format is supported)
-    icp = ""
+    icp = '<a href="https://beian.miit.gov.cn/" target="_blank">赣ICP备2022003182号-1</a>'
     # license info (HTML format is supported)
     license = '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
 
