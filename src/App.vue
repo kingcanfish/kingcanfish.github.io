@@ -107,22 +107,22 @@ onMounted(() => {
   <!-- 导航 -->
   <nav absolute fixed bottom-4 left-4 z-20>
     <div v-for="(item, index) in data.navLinks" :key="index" my-6 text-3 text-white wv>
-      <a :href="item.link" opacity-75 text-white tracking-widest hover:opacity-100>
+      <a :href="item.link" text-white tracking-widest opacity-75 hover:opacity-100>
         {{ item.name }}
       </a>
     </div>
   </nav>
 
   <!-- 主体 -->
-  <main bg-transparent absolute w-full top-75vh z-10>
+  <main absolute top-75vh z-10 w-full bg-transparent>
     <!-- 大标题 -->
-    <section ml-15vw absolute>
+    <section absolute ml-15vw>
       <div text-10 text-white font-bold tracking-widest v-html="data.titleList[Math.floor(Math.random() * data.titleList.length)]" />
       <div flex items-center>
         <div mr-4 flex gap-2>
-          <div bg-red rounded-full h-3 w-3 />
-          <div bg-yellow rounded-full h-3 w-3 />
-          <div bg-green rounded-full h-3 w-3 />
+          <div h-3 w-3 rounded-full bg-red />
+          <div h-3 w-3 rounded-full bg-yellow />
+          <div h-3 w-3 rounded-full bg-green />
         </div>
         <div text-4 text-white tracking-widest>
           小孙同学祝您今天快乐
@@ -153,7 +153,7 @@ onMounted(() => {
             We're making the world a better place. Through constructing elegant hierarchies for maximum code reuse and extensibility.
           </p>
         </div>
-        <img hidden rounded-full h-25 w-25 transition md:block hover:-translate-y--2 src="./assets/images/avatar.webp" alt="avatar">
+        <img hidden h-25 w-25 rounded-full transition md:block hover:-translate-y--2 src="./assets/images/avatar.webp" alt="avatar">
       </div>
 
       <!-- 我的技能 -->
@@ -168,11 +168,11 @@ onMounted(() => {
       <div mb-10 flex flex-wrap justify-between>
         <div v-for="(item, index) in data.myProjects" :key="index" mx-10 my-4 class="basis-3/4 md:basis-1/6">
           <a :href="item.link">
-            <div class="bg-white/5 hover:bg-white/10" p-2 rounded-lg shadow-md flex-col transition backdrop-blur-3xl backdrop-opacity-60 hover:backdrop-opacity-100 hover:-translate-y-2>
-              <div text-bold opacity-75 text-white>
+            <div class="bg-white/5 hover:bg-white/10" flex-col rounded-lg p-2 shadow-md backdrop-blur-3xl backdrop-opacity-60 transition hover:backdrop-opacity-100 hover:-translate-y-2>
+              <div text-bold text-white opacity-75>
                 {{ item.name }}
               </div>
-              <div mt-1 opacity-50 text-3 text-white>
+              <div mt-1 text-3 text-white opacity-50>
                 {{ item.description }}
               </div>
             </div>
@@ -186,9 +186,9 @@ onMounted(() => {
       </div>
       <div flex flex-wrap justify-between>
         <div v-for="(item, index) in data.socialLinks" :key="index" mx-10 my-4 class="basis-1/6">
-          <a class="bg-white/5 hover:bg-white/10" p-2 rounded-lg shadow-md flex-col justify-between items-center transition backdrop-blur-3xl backdrop-opacity-60 hover:backdrop-opacity-100 hover:-translate-y-2 :href="item.link">
-            <div mb-1 text-white f-c-c v-html="item.icon" />
-            <div text-bold opacity-75 text-white>{{ item.label }}</div>
+          <a class="bg-white/5 hover:bg-white/10" flex-col items-center justify-between rounded-lg p-2 shadow-md backdrop-blur-3xl backdrop-opacity-60 transition hover:backdrop-opacity-100 hover:-translate-y-2 :href="item.link">
+            <div mb-1 f-c-c text-white v-html="item.icon" />
+            <div text-bold text-white opacity-75>{{ item.label }}</div>
           </a>
         </div>
       </div>
@@ -209,11 +209,11 @@ onMounted(() => {
   </main>
 
   <!-- 背景 -->
-  <div id="background" absolute wh-full left-0 top-0 z-0>
+  <div id="background" absolute left-0 top-0 z-0 wh-full>
     <!-- 渐变阴影 -->
-    <div to-black-500 absolute h-80vh w-full bottom--30vh left-0 from-black bg-gradient-to-t />
+    <div to-black-500 absolute bottom--30vh left-0 h-80vh w-full from-black bg-gradient-to-t />
     <!-- 星轨背景 -->
-    <StarTrails pb-45vh bg-black />
+    <StarTrails bg-black pb-45vh />
   </div>
 </template>
 
