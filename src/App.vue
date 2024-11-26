@@ -140,10 +140,10 @@ onMounted(() => {
       <!-- <div text-bold mb-2 ml-10 text-8 text-white>
         Projects
       </div> -->
-      <div mb-10 flex flex-wrap justify-between>
+      <!-- <div mb-10 flex flex-wrap justify-between>
         <div v-for="(item, index) in data.myProjects" :key="index" mx-10 my-4 class="basis-3/4 md:basis-1/6">
           <a :href="item.link">
-            <div class="bg-white/5 hover:bg-white/10" flex-col rounded-lg p-2 shadow-md backdrop-blur-3xl backdrop-opacity-60 transition hover:backdrop-opacity-100 hover:-translate-y-2>
+            <div class="bg-white/5 hover:bg-white/10 width:12px flex-col rounded-lg p-2 shadow-md backdrop-blur-3xl backdrop-opacity-60 transition" hover:backdrop-opacity-100 hover:-translate-y-2>
               <div text-bold text-white opacity-75>
                 {{ item.name }}
               </div>
@@ -153,16 +153,16 @@ onMounted(() => {
             </div>
           </a>
         </div>
-      </div>
+      </div> -->
 
       <!-- 社交链接 -->
       <div text-bold mb-2 ml-10 text-8 text-white>
         Find Me
       </div>
-      <div flex flex-wrap justify-between>
-        <div v-for="(item, index) in data.socialLinks" :key="index" mx-10 my-4 class="basis-1/6">
-          <a class="bg-white/5 hover:bg-white/10" flex-col items-center justify-between rounded-lg p-2 shadow-md backdrop-blur-3xl backdrop-opacity-60 transition hover:backdrop-opacity-100 hover:-translate-y-2 :href="item.link">
-            <div mb-1 f-c-c text-white v-html="item.icon" />
+      <div flex flex-row flex-wrap justify-start>
+        <div v-for="(item, index) in data.socialLinks" :key="index" mx-10 my-4 class="basis-auto">
+          <a class="w-24 bg-white/5 hover:bg-white/10" flex-col items-center justify-start rounded-lg p-2 shadow-md backdrop-blur-3xl backdrop-opacity-60 transition hover:backdrop-opacity-100 hover:-translate-y-2 :href="item.link">
+            <div mb-1 f-c-c text-white opacity-100 v-html="item.icon" />
             <div text-bold text-white opacity-75>{{ item.label }}</div>
           </a>
         </div>
