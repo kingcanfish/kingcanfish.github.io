@@ -41,7 +41,7 @@ jobs:
         id: pages
         uses: actions/configure-pages@v4
       - name: Install Node.js dependencies
-        run: '[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true'
+        run: npm install
       - name: Build Vitex for Production
         run: npm run build
       - name: Upload artifact
