@@ -4,89 +4,66 @@ import StarTrails from './components/StarTrails.vue'
 
 const data = reactive({
   titleList: [
-    '热爱……',
-    '敬畏之心！',
-    '赞美之心！',
-    '我很好奇！',
-    '你好，请多指教',
-    '*舒缓的现代音乐*',
-    '希望能成为有趣的人',
-    '相信美好的事情即将发生',
-    '平凡的日常正奇迹的发生着',
-    '你所热爱的<br/>就是你的生活',
-    '给时光以生命<br/>给岁月以文明',
-    '路虽远行则将至<br/>事虽难做则必成',
-    '一望无际的迷雾中<br/>有人在寻找光明',
-    '当你在凝视着网页的时候<br/>网页也正在凝视着你',
+    '在稻城冰雪融化的早晨<br/>在布满星辰斑斓的黄昏',
   ],
   navLinks: [{
     name: '博 客',
-    link: 'https://blog.sunguoqi.com',
+    link: 'https://ts.gxy.plus',
   }, {
     name: '影 集',
-    link: 'https://camera.sunguoqi.com',
-  }, {
-    name: '运 动',
-    link: 'https://bicycling.sunguoqi.com',
-  }, {
-    name: '留 言',
-    link: 'https://blog.sunguoqi.com/comments',
+    link: 'https://ts.gxy.plus',
   }],
 
-  myProjects: [{
-    name: 'Home',
-    description: '个人简介、主页、引导页',
-    link: 'https://github.com/sun0225SUN/home',
-  }, {
-    name: 'Blog',
-    description: '个人博客，学习&随笔',
-    link: 'https://github.com/sun0225SUN/blog',
-  }, {
-    name: 'Brain',
-    description: '知识库、第二大脑',
-    link: 'https://github.com/sun0225SUN/brain',
-  }, {
-    name: 'Camera',
-    description: '摄影相册',
-    link: 'https://github.com/sun0225SUN/camera',
-  }, {
-    name: 'Camera Tools',
-    description: '摄影工具箱',
-    link: 'https://github.com/sun0225SUN/camera-tools',
-  }, {
-    name: 'Bicycling',
-    description: '骑行主页',
-    link: 'https://github.com/sun0225SUN/bicycling',
-  }, {
-    name: 'Life Map',
-    description: '人生地图、点亮足迹',
-    link: 'https://github.com/sun0225SUN/life-map',
-  }, {
-    name: 'Coder',
-    description: '闪闪发光的程序们',
-    link: 'https://github.com/sun0225SUN/coder',
-  }, {
-    name: 'Starter',
-    description: '前端项目起手架模版',
-    link: 'https://github.com/sun0225SUN/starter',
-  }],
+  // myProjects: [{
+  //   name: 'Home',
+  //   description: '个人简介、主页、引导页',
+  //   link: 'https://github.com/sun0225SUN/home',
+  // }, {
+  //   name: 'Blog',
+  //   description: '个人博客，学习&随笔',
+  //   link: 'https://github.com/sun0225SUN/blog',
+  // }, {
+  //   name: 'Brain',
+  //   description: '知识库、第二大脑',
+  //   link: 'https://github.com/sun0225SUN/brain',
+  // }, {
+  //   name: 'Camera',
+  //   description: '摄影相册',
+  //   link: 'https://github.com/sun0225SUN/camera',
+  // }, {
+  //   name: 'Camera Tools',
+  //   description: '摄影工具箱',
+  //   link: 'https://github.com/sun0225SUN/camera-tools',
+  // }, {
+  //   name: 'Bicycling',
+  //   description: '骑行主页',
+  //   link: 'https://github.com/sun0225SUN/bicycling',
+  // }, {
+  //   name: 'Life Map',
+  //   description: '人生地图、点亮足迹',
+  //   link: 'https://github.com/sun0225SUN/life-map',
+  // }, {
+  //   name: 'Coder',
+  //   description: '闪闪发光的程序们',
+  //   link: 'https://github.com/sun0225SUN/coder',
+  // }, {
+  //   name: 'Starter',
+  //   description: '前端项目起手架模版',
+  //   link: 'https://github.com/sun0225SUN/starter',
+  // }],
 
   socialLinks: [{
     icon: '<i i-ant-design-github-outlined />',
-    link: 'https://github.com/sun0225SUN',
+    link: 'https://github.com/kingcanfish',
     label: 'Github',
   }, {
-    icon: '<i i-ant-design-x-outlined />',
-    link: 'https://twitter.com/sun0225SUN',
-    label: 'Twitter',
+    icon: '<i i-ant-design-mail-outlined />',
+    link: 'mailto:i@gxy.plus',
+    label: 'Email',
   }, {
-    icon: '<i i-ant-design-youtube-outlined />',
-    link: 'https://youtube.com/@sun0225SUN',
-    label: 'YouTube',
-  }, {
-    icon: '<i i-ant-design-bilibili-outlined />',
-    link: 'https://space.bilibili.com/448488855/',
-    label: 'Bilibili',
+    icon: '<i i-ant-design-instagram-outlined />',
+    link: 'https://www.instagram.com/kuoisguo/',
+    label: 'Instagram',
   }],
 })
 
@@ -125,7 +102,7 @@ onMounted(() => {
           <div h-3 w-3 rounded-full bg-green />
         </div>
         <div text-4 text-white tracking-widest>
-          小孙同学祝您今天快乐
+          我肩上是自由的风
         </div>
       </div>
     </section>
@@ -133,27 +110,25 @@ onMounted(() => {
     <section mx-9vw mt-90>
       <!-- 关于我 -->
       <div text-bold mb-4 ml-10 text-8 text-white>
-        About Me
+        About
       </div>
       <div mx-10 mb-10 flex justify-between>
         <div class="text-white/80">
           <p leading-10>
-            嗨，你好，我是小孙同学。
+            Hi 👋～ 我是 kingcanfish
           </p>
           <p leading-10>
-            热爱编程、摄影、读书、旅行。
+            一个混迹在互联网的普通开发者, 后端零食工, Gopher。
           </p>
           <p leading-10>
-            热爱计算机科学和 IT 互联网事业，希望能成为一名优秀的开发者。
+            世间的美好太多了 你也是
           </p>
           <p leading-10>
-            我们正在让这个世界变得更加美好，通过代码的重复使用和延展构建完美体系。
+            家园已在身后, 世界尽在眼前
           </p>
-          <p leading-10>
-            We're making the world a better place. Through constructing elegant hierarchies for maximum code reuse and extensibility.
-          </p>
+          <p leading-10 />
         </div>
-        <img hidden h-25 w-25 rounded-full transition md:block hover:-translate-y--2 src="./assets/images/avatar.webp" alt="avatar">
+        <img hidden h-25 w-25 rounded-full transition md:block hover:-translate-y--2 src="./assets/images/avatar.jpeg" alt="avatar">
       </div>
 
       <!-- 我的技能 -->
@@ -162,9 +137,9 @@ onMounted(() => {
         </div> -->
 
       <!-- 我的项目 -->
-      <div text-bold mb-2 ml-10 text-8 text-white>
+      <!-- <div text-bold mb-2 ml-10 text-8 text-white>
         Projects
-      </div>
+      </div> -->
       <div mb-10 flex flex-wrap justify-between>
         <div v-for="(item, index) in data.myProjects" :key="index" mx-10 my-4 class="basis-3/4 md:basis-1/6">
           <a :href="item.link">
@@ -198,12 +173,14 @@ onMounted(() => {
     <footer mb-5>
       <div class="text-white/60" mt-50 f-c-c>
         <i i-ant-design-environment-outlined mr-1 />
-        <p>路虽远行则将至，事虽难做则必成</p>
+        <p>拥有一个有趣的灵魂</p>
         <i i-ant-design-environment-outlined ml-1 />
       </div>
       <div class="text-white/60" mt-2 f-c-c gap-4>
-        <div>皖 ICP 备 2021010058 号</div>
-        <div>© 2024 小孙同学</div>
+        <a href="https://beian.miit.gov.cn/" style="text-decoration: none; color: inherit;">
+          <div>赣ICP备2022003182号-1</div>
+        </a>
+        <div>© 2024 kingcanfish</div>
       </div>
     </footer>
   </main>
