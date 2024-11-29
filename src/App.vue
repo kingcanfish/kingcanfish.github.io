@@ -8,10 +8,10 @@ const data = reactive({
   ],
   navLinks: [{
     name: '博 客',
-    link: 'https://ts.gxy.plus',
+    link: 'https://blog.gxy.plus',
   }, {
     name: '影 集',
-    link: 'https://ts.gxy.plus',
+    link: 'https://photo.gxy.plus',
   }],
 
   // myProjects: [{
