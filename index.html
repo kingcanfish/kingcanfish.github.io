@@ -1,43 +1,137 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XinyuKuo·Dev</title>
-    <link rel="icon" type="image/jpeg" href="./favicon.jpeg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <div class="container">
-        <div class="avatar">
-            <!-- 这里替换成你的头像URL -->
-            <img src="assets/images/avatar.jpeg" alt="头像">
-        </div>
-        <div class="quote">
-            <p>"Though my own steps may be confined, my data packets dance across the world."</p>
-        </div>
-        <h1>「Xinyu Kuo」</h1>
-        <p class="bio">
-            <a>Back End Developer, Foucus on Go and Web Development.</a>
-            <br>
-            <a>Interested in Rust, Distributed Systems, Cloud Native.</a>
-            <br>
-            <a>Find me in below links</a>
-        </p>
-        <div class="social-links">
-            <a href="https://github.com/kingcanfish" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://blog.gxy.plus" class="social-link" target="_blank"><i class="fas fa-blog"></i></a>
-            <a href="https://run.gxy.plus" class="social-link" target="_blank"><i class="fa-solid fa-person-running"></i></a>
-            <a href="https://www.instagram.com/kuoisguo/" class="social-link" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="mailto:i@gxy.plus" class="social-link" target="_blank"><i class="fa-solid fa-envelope"></i></a>
-            <a href="https://steamcommunity.com/profiles/76561198863453815" class="social-link" target="_blank"><i class="fa-brands fa-steam"></i></a>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
 
+    <title>Xinyu Kuo · Homepage</title>
+    <meta name="description" content="Xinyu Kuo 的个人主页">
+    <meta name="keywords" content="Xinyu Kuo, Homepage, Backend, Go, Rust, Cloud Native">
+    <link rel="icon" type="image/jpeg" href="./favicon.jpeg">
+    <link rel="apple-touch-icon-precomposed" href="./source/img/avatar.jpg">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Regular.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Bold.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Heavy.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="./source/h.css">
+</head>
+
+<body class="pending-init">
+    <div class="background">
+        <canvas id="startrack"></canvas>
+        <div class="cover"></div>
+    </div>
+    <div class="main">
+        <div class="ch intro">
+            <div class="container">
+                <div class="hello">
+                    <!-- <img src="./source/img/avatar.jpg" class="avatar" /> -->
+                    <h1 id="slogan">...</h1>
+                </div>
+                <div class="readme">
+                    <p id="readme-line1">
+                        Though my own steps may be confined,<br>my data packets dance across the world.
+                    </p>
+                    <p id="readme-line2">
+                        <span class="b">你好，我是 Xinyu Kuo<sup>@kingcanfish</sup>。</span><br> Back End Developer, focus on Go and Web Development.
+                        <br> Interested in Rust, Distributed Systems and Cloud Native.
+                    </p>
+                    <p id="readme-line3">
+                        如果你对我感兴趣，可以<a href="#" id="roll-trigger">点这里</a> Roll 一个关于我的标签，<br> 也欢迎在下面的链接中关注我或直接发邮件联系我。
+                    </p>
+                    <div class="roll-tag"></div>
+                    <p id="readme-line4">希望能与你在比特之海的繁星下相见。</p>
+                </div>
+
+                <div class="find-me" id="social-links">
+                    <a class="item" href="https://github.com/kingcanfish" target="_blank">
+                        <i class="fa-brands fa-github fa-fw"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a class="item" href="https://blog.gxy.plus" target="_blank">
+                        <i class="fa-solid fa-blog fa-fw"></i>
+                        <span>Blog</span>
+                    </a>
+                    <a class="item" href="mailto:i@gxy.plus" target="_blank">
+                        <i class="fa-solid fa-envelope fa-fw"></i>
+                        <span>Email</span>
+                    </a>
+                    <a class="item" href="https://www.instagram.com/kuoisguo/" target="_blank">
+                        <i class="fa-brands fa-instagram fa-fw"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a class="item" href="https://run.gxy.plus" target="_blank">
+                        <i class="fa-solid fa-person-running fa-fw"></i>
+                        <span>Running</span>
+                    </a>
+                    <a class="item" href="https://steamcommunity.com/profiles/76561198863453815" target="_blank">
+                        <i class="fa-brands fa-steam fa-fw"></i>
+                        <span>Steam</span>
+                    </a>
+                    <a class="item" href="https://t.me/" target="_blank">
+                        <i class="fa-brands fa-telegram fa-fw"></i>
+                        <span>Telegram</span>
+                    </a>
+                    <a class="item" href="https://x.com/" target="_blank">
+                        <i class="fa-brands fa-x-twitter fa-fw"></i>
+                        <span>X</span>
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="ch clear">
+            <div class="container">
+                <div class="enter-list">
+                    <a class="item" id="entry-blog" href="https://blog.gxy.plus">
+                        <div class="text" id="entry-blog-text">博客</div>
+                        <div class="bg">
+                            <div class="square">
+                                <svg width="100" height="100" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<rect width="100" height="100" rx="10" fill="url(#paint0_linear)"/>
+									<defs>
+									<linearGradient id="paint0_linear" x1="50" y1="0" x2="50" y2="100" gradientUnits="userSpaceOnUse">
+									<stop stop-color="white"/>
+									<stop offset="1" stop-color="white" stop-opacity="0"/>
+									</linearGradient>
+									</defs>
+									</svg>
+                            </div>
+
+                        </div>
+                    </a>
+                    <a class="item" id="entry-running" href="https://run.gxy.plus">
+                        <div class="text" id="entry-running-text">跑步轨迹</div>
+                        <div class="bg">
+                            <div class="triangle">
+                                <svg width="116" height="103" preserveAspectRatio="xMidYMid meet" viewBox="0 0 116 103" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M49.3397 5.00001C53.1887 -1.66666 62.8113 -1.66667 66.6603 5L114.292 87.5C118.141 94.1667 113.329 102.5 105.631 102.5H10.3686C2.67061 102.5 -2.14065 94.1667 1.70835 87.5L49.3397 5.00001Z" fill="url(#paint0_linear)"/>
+									<defs>
+									<linearGradient id="paint0_linear" x1="58" y1="0.5" x2="58" y2="104" gradientUnits="userSpaceOnUse">
+									<stop stop-color="white"/>
+									<stop offset="1" stop-color="white" stop-opacity="0"/>
+									<stop offset="1" stop-color="white" stop-opacity="0"/>
+									</linearGradient>
+									</defs>
+									</svg>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="icp-info">
-        <a href="https://beian.miit.gov.cn/" target="_blank">赣ICP备2022003182号-1</a>
-        <div class="powered-by">Powered by Claude-3.5-Sonnet </div>
+    <div class="footer ch">
+        <div class="container">
+            <p><a id="footer-link" href="https://beian.miit.gov.cn/" target="_blank">赣ICP备2022003182号-1</a></p>
+        </div>
     </div>
+    <script src="./source/page.js"></script>
 </body>
+
 </html>

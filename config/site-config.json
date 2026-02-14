@@ -1,0 +1,106 @@
+{
+  "site": {
+    "lang": "zh",
+    "title": "Xinyu Kuo · Homepage",
+    "description": "Xinyu Kuo 的个人主页",
+    "keywords": "Xinyu Kuo, Homepage, Backend, Go, Rust, Cloud Native"
+  },
+  "profile": {
+    "readme": {
+      "line1Html": "“虽然我的脚步无法丈量每一寸土地，但我已将灵魂托付给那些奔腾的数字信号。<br> 它们化作无数透明的信使，替我轻吻过喜马拉雅的雪顶，聆听过撒哈拉的风声；<br>最终在世界的每一个角落，留下我存在的、无声的涟漪。” </span>",
+      "line2Html": "<span class=\"b\">你好，我是 Xinyu Kuo<sup>@kingcanfish</sup>。</span><br> 目前在互联网行业做一些微小的工作。",
+      "rollPromptPrefixHtml": "如果你对我感兴趣，可以",
+      "rollLinkText": "点这里",
+      "rollPromptSuffixHtml": " Roll 一个关于我的标签，<br> 也欢迎在下面的链接中关注我或直接发邮件联系我。",
+      "line4Html": "希望能与你在比特之海的繁星下相见。"
+    }
+  },
+  "socialLinks": [
+    {
+      "label": "GitHub",
+      "iconClass": "fa-brands fa-github fa-fw",
+      "url": "https://github.com/kingcanfish",
+      "newTab": true
+    },
+    {
+      "label": "Blog",
+      "iconClass": "fa-solid fa-blog fa-fw",
+      "url": "https://blog.gxy.plus",
+      "newTab": true
+    },
+    {
+      "label": "Email",
+      "iconClass": "fa-solid fa-envelope fa-fw",
+      "url": "mailto:i@gxy.plus",
+      "newTab": true
+    },
+    {
+      "label": "Instagram",
+      "iconClass": "fa-brands fa-instagram fa-fw",
+      "url": "https://www.instagram.com/kuoisguo/",
+      "newTab": true
+    },
+    {
+      "label": "Running",
+      "iconClass": "fa-solid fa-person-running fa-fw",
+      "url": "https://run.gxy.plus",
+      "newTab": true
+    },
+    {
+      "label": "Steam",
+      "iconClass": "fa-brands fa-steam fa-fw",
+      "url": "https://steamcommunity.com/profiles/76561198863453815",
+      "newTab": true
+    },
+    {
+      "label": "Telegram",
+      "iconClass": "fa-brands fa-telegram fa-fw",
+      "url": "https://t.me/",
+      "newTab": true
+    },
+    {
+      "label": "X",
+      "iconClass": "fa-brands fa-x-twitter fa-fw",
+      "url": "https://x.com/",
+      "newTab": true
+    }
+  ],
+  "entries": {
+    "blog": {
+      "label": "博客",
+      "url": "https://blog.gxy.plus"
+    },
+    "running": {
+      "label": "跑步轨迹",
+      "url": "https://run.gxy.plus"
+    }
+  },
+  "footer": {
+    "text": "赣ICP备2022003182号-1",
+    "url": "https://beian.miit.gov.cn/",
+    "newTab": true
+  },
+  "slogans": [
+    "你好，<br>请多指教。",
+    "人生何处不青山。",
+    "所谓每天平凡的日常，<br>都是接连发生的奇迹。",
+    "你好世界，<br>Hello World。",
+    "终生学习， <br>持续进步。"
+  ],
+  "tags": [
+    "Back End Developer",
+    "Golang",
+    "Rust",
+    "Web Development",
+    "Distributed Systems",
+    "Cloud Native",
+    "Open Source Learner",
+    "Linux User",
+    "Coffee Driven",
+    "Runner",
+    "Steam 玩家",
+    "Counter Strike 2",
+    "持续交付爱好者",
+    "如果这个标签没意思，就再 Roll 一次"
+  ]
+}
