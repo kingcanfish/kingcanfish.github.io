@@ -569,6 +569,10 @@ ul.skill li .progress div {
     animation: spin-icon 30s linear infinite;
 }
 
+.enter-list .item .bg .circle svg {
+    animation: spin-icon 20s linear infinite;
+}
+
 @keyframes spin-icon {
     0% {
         transform: rotate(0);

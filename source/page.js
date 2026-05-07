@@ -156,6 +156,7 @@ const DEFAULT_SITE_CONFIG = {
   entries: {
     blog: { label: "博客", url: "https://blog.gxy.plus" },
     running: { label: "跑步轨迹", url: "https://run.gxy.plus" },
+    photo: { label: "光迹", url: "https://photo.gxy.plus" },
   },
   footer: {
     text: "赣ICP备2022003182号-1",
@@ -220,6 +221,7 @@ function mergeSiteConfig(defaults, userConfig){
       ...userEntries,
       blog: { ...defaults.entries.blog, ...(userEntries.blog || {}) },
       running: { ...defaults.entries.running, ...(userEntries.running || {}) },
+      photo: { ...defaults.entries.photo, ...(userEntries.photo || {}) },
     },
     footer: { ...defaults.footer, ...(user.footer || {}) },
     slogans: Array.isArray(user.slogans) && user.slogans.length ? user.slogans : defaults.slogans,
@@ -338,6 +340,7 @@ function applySiteConfig(config){
   if (config.entries) {
     applyEntry("entry-blog", "entry-blog-text", config.entries.blog);
     applyEntry("entry-running", "entry-running-text", config.entries.running);
+    applyEntry("entry-photo", "entry-photo-text", config.entries.photo);
   }
 
   if (config.footer) {
