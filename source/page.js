@@ -1,6 +1,71 @@
 // 如果你看到这段文字了，你懂我什么意思吧。
 window.requestAnimFrame=function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(a){window.setTimeout(a,1E3/60)}}();
 
+var prefersReducedMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+var isMobile = !!(window.matchMedia && window.matchMedia('(max-width: 700px)').matches);
+
+// Glyph-scramble reveal — text resolves out of noise, a nod to decoding a packet.
+var SCRAMBLE_GLYPHS = '01<>/\\{}[]=+*#&%$01アイウエオカキ';
+
+function scrambleElement(el, html, duration) {
+  if (!el) {
+    return;
+  }
+  if (prefersReducedMotion) {
+    el.innerHTML = html;
+    return;
+  }
+  el.innerHTML = html;
+
+  var textNodes = [];
+  (function walk(node) {
+    for (var i = 0; i < node.childNodes.length; i++) {
+      var child = node.childNodes[i];
+      if (child.nodeType === 3) {
+        textNodes.push({ node: child, text: child.nodeValue });
+      } else {
+        walk(child);
+      }
+    }
+  })(el);
+
+  var total = textNodes.reduce(function (sum, t) { return sum + t.text.length; }, 0);
+  if (total === 0) {
+    return;
+  }
+
+  var start = (window.performance && performance.now) ? performance.now() : Date.now();
+
+  function frame(now) {
+    var p = Math.min(1, (now - start) / duration);
+    var revealCount = p * total;
+    var idx = 0;
+    for (var n = 0; n < textNodes.length; n++) {
+      var t = textNodes[n];
+      var out = '';
+      for (var i = 0; i < t.text.length; i++) {
+        var ch = t.text[i];
+        if (idx < revealCount || ch === ' ' || ch === ' ' || ch === '\n') {
+          out += ch;
+        } else {
+          out += SCRAMBLE_GLYPHS[(Math.random() * SCRAMBLE_GLYPHS.length) | 0];
+        }
+        idx++;
+      }
+      t.node.nodeValue = out;
+    }
+    if (p < 1) {
+      requestAnimFrame(function () { frame((window.performance && performance.now) ? performance.now() : Date.now()); });
+    } else {
+      for (var m = 0; m < textNodes.length; m++) {
+        textNodes[m].node.nodeValue = textNodes[m].text;
+      }
+    }
+  }
+
+  requestAnimFrame(function () { frame((window.performance && performance.now) ? performance.now() : Date.now()); });
+}
+
 function initStarfield(){
 
   var cf = document.createElement("canvas");
@@ -108,6 +173,11 @@ function initStarfield(){
   }
 
   var count = 22000;
+  if (isMobile) {
+    count = 7000;
+  } else if (window.innerWidth < 1200) {
+    count = 13000;
+  }
   while(count--){
       createStar();
   }
@@ -122,7 +192,157 @@ function initStarfield(){
       loop();
   }
 
-  fireAnimate();
+  if (prefersReducedMotion) {
+    // Draw the field once, no rotation, no twinkle loop.
+    drawfromCache();
+  } else {
+    fireAnimate();
+  }
+}
+
+
+// Signature effect: data packets occasionally streak across the field —
+// "my data packets dance across the world." Rare, never busy.
+function initPackets() {
+  if (prefersReducedMotion) {
+    return;
+  }
+  var c = document.getElementById('packets');
+  if (!c) {
+    return;
+  }
+  var cw = c.offsetWidth;
+  var ch = c.offsetHeight;
+  if (!cw || !ch) {
+    return;
+  }
+  c.width = cw;
+  c.height = ch;
+  var ctx = c.getContext('2d');
+
+  var packets = [];
+  var framesToNext = 90;
+  var maxPackets = isMobile ? 2 : 3;
+
+  function rnd(min, max) {
+    return min + Math.random() * (max - min);
+  }
+
+  function packetColor() {
+    return 'hsl(' + Math.floor(rnd(0, 360)) + ', 90%, 72%)';
+  }
+
+  function spawn() {
+    var dir = Math.random() < 0.5 ? 1 : -1;
+    var speed = rnd(6, 11);
+    var vx = dir * speed;
+    var vy = rnd(-1.4, 1.4);
+    var mag = Math.sqrt(vx * vx + vy * vy);
+    packets.push({
+      x: dir === 1 ? -60 : cw + 60,
+      y: rnd(ch * 0.04, ch * 0.72),
+      vx: vx,
+      vy: vy,
+      ux: vx / mag,
+      uy: vy / mag,
+      len: rnd(130, 230),
+      color: packetColor()
+    });
+  }
+
+  function frame() {
+    requestAnimFrame(frame);
+    ctx.clearRect(0, 0, cw, ch);
+
+    if (--framesToNext <= 0 && packets.length < maxPackets) {
+      spawn();
+      framesToNext = Math.floor(rnd(360, 640));
+    }
+
+    for (var i = packets.length - 1; i >= 0; i--) {
+      var p = packets[i];
+      p.x += p.vx;
+      p.y += p.vy;
+
+      var tailX = p.x - p.ux * p.len;
+      var tailY = p.y - p.uy * p.len;
+      var g = ctx.createLinearGradient(tailX, tailY, p.x, p.y);
+      g.addColorStop(0, 'transparent');
+      g.addColorStop(1, p.color);
+      ctx.strokeStyle = g;
+      ctx.lineWidth = 1.6;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(tailX, tailY);
+      ctx.lineTo(p.x, p.y);
+      ctx.stroke();
+
+      ctx.save();
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = p.color;
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 1.8, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      if (p.x < -340 || p.x > cw + 340 || p.y < -340 || p.y > ch + 340) {
+        packets.splice(i, 1);
+      }
+    }
+  }
+
+  frame();
+}
+
+
+// Subtle depth: the star field eases opposite the cursor.
+function initParallax() {
+  if (prefersReducedMotion) {
+    return;
+  }
+  var bg = document.querySelector('.background');
+  if (!bg) {
+    return;
+  }
+  var tx = 0, ty = 0, cx = 0, cy = 0;
+
+  window.addEventListener('pointermove', function (e) {
+    tx = ((e.clientX / window.innerWidth) - 0.5) * -18;
+    ty = ((e.clientY / window.innerHeight) - 0.5) * -18;
+  }, { passive: true });
+
+  function tick() {
+    requestAnimFrame(tick);
+    cx += (tx - cx) * 0.06;
+    cy += (ty - cy) * 0.06;
+    bg.style.transform = 'translate3d(' + cx.toFixed(2) + 'px,' + cy.toFixed(2) + 'px,0)';
+  }
+  tick();
+}
+
+
+// Entry cards tilt toward the cursor and carry a moving spotlight.
+function initCards() {
+  if (prefersReducedMotion) {
+    return;
+  }
+  var items = document.querySelectorAll('.enter-list .item');
+  items.forEach(function (item) {
+    item.addEventListener('pointermove', function (e) {
+      var r = item.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width;
+      var py = (e.clientY - r.top) / r.height;
+      item.style.setProperty('--rx', ((0.5 - py) * 10).toFixed(2) + 'deg');
+      item.style.setProperty('--ry', ((px - 0.5) * 12).toFixed(2) + 'deg');
+      item.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+      item.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+    });
+    item.addEventListener('pointerleave', function () {
+      item.style.setProperty('--rx', '0deg');
+      item.style.setProperty('--ry', '0deg');
+    });
+  });
 }
 
 
@@ -384,7 +604,7 @@ function getMsg(){
 	var r = random(0,slogans.length-1);
   const sloganEl = document.getElementById("slogan");
   if (sloganEl) {
-	  sloganEl.innerHTML = slogans[r];
+	  scrambleElement(sloganEl, slogans[r], 600);
   }
 }
 
@@ -446,6 +666,11 @@ function rollOnce() {
   setTimeout(function() {
     clearInterval(rollTimer)
     rollTimer = null
+    // Final tag settles out of the glyph noise.
+    const span = document.querySelector(".roll-tag span")
+    if (span) {
+      scrambleElement(span, span.textContent, 320)
+    }
   }, 1800)
 }
 
@@ -455,6 +680,9 @@ function getRandomTag() {
 
 function bootstrap() {
   initStarfield();
+  initPackets();
+  initParallax();
+  initCards();
   initPage();
 }
 
