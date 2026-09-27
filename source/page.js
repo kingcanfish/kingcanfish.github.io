@@ -366,12 +366,12 @@ const DEFAULT_SITE_CONFIG = {
   socialLinks: [
     { label: "GitHub", iconClass: "fa-brands fa-github fa-fw", url: "https://github.com/kingcanfish", newTab: true },
     { label: "Blog", iconClass: "fa-solid fa-blog fa-fw", url: "https://blog.gxy.plus", newTab: true },
-    { label: "Email", iconClass: "fa-solid fa-envelope fa-fw", url: "mailto:i@gxy.plus", newTab: true },
+    { label: "Email", iconClass: "fa-solid fa-envelope fa-fw", url: "mailto:hi@gxy.plus", newTab: true },
     { label: "Instagram", iconClass: "fa-brands fa-instagram fa-fw", url: "https://www.instagram.com/kuoisguo/", newTab: true },
     { label: "Running", iconClass: "fa-solid fa-person-running fa-fw", url: "https://run.gxy.plus", newTab: true },
     { label: "Steam", iconClass: "fa-brands fa-steam fa-fw", url: "https://steamcommunity.com/profiles/76561198863453815", newTab: true },
-    { label: "Telegram", iconClass: "fa-brands fa-telegram fa-fw", url: "https://t.me/", newTab: true },
-    { label: "X", iconClass: "fa-brands fa-x-twitter fa-fw", url: "https://x.com/", newTab: true },
+    { label: "Telegram", iconClass: "fa-brands fa-telegram fa-fw", url: "https://t.me/sitmedownshutmeup", newTab: true },
+    { label: "X", iconClass: "fa-brands fa-x-twitter fa-fw", url: "https://x.com/vkghvk", newTab: true },
   ],
   entries: {
     blog: { label: "博客", url: "https://blog.gxy.plus" },

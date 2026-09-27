@@ -31,7 +31,7 @@
     {
       "label": "Email",
       "iconClass": "fa-solid fa-envelope fa-fw",
-      "url": "mailto:i@gxy.plus",
+      "url": "mailto:hi@gxy.plus",
       "newTab": true
     },
     {
@@ -55,13 +55,13 @@
     {
       "label": "Telegram",
       "iconClass": "fa-brands fa-telegram fa-fw",
-      "url": "https://t.me/",
+      "url": "https://t.me/sitmedownshutmeup",
       "newTab": true
     },
     {
       "label": "X",
       "iconClass": "fa-brands fa-x-twitter fa-fw",
-      "url": "https://x.com/",
+      "url": "https://x.com/vkghvk",
       "newTab": true
     }
   ],
