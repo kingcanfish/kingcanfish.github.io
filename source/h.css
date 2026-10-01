@@ -547,20 +547,20 @@ ul.skill li .progress div {
 }
 
 .enter-list {
-    display: flex;
-    justify-content: flex-start;
-    gap: 28px;
-    flex-wrap: wrap;
+    /* 四块一行，和上面社交图标那一栏同宽（8 × 80px + 7 × 20px） */
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    max-width: 780px;
     margin: 0;
 }
 
 .enter-list .item {
     position: relative;
-    width: min(360px, calc(50% - 14px));
     display: block;
     color: #fff;
     text-decoration: none;
-    height: 160px;
+    height: 150px;
     background-color: #333;
     border-radius: 10px;
     transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
@@ -618,16 +618,16 @@ ul.skill li .progress div {
 
 .enter-list .item .bg svg {
     position: absolute;
-    right: -20px;
-    top: -20px;
-    height: 160px;
-    width: 160px;
+    right: -24px;
+    top: -24px;
+    height: 136px;
+    width: 136px;
     opacity: .05;
 }
 
 .enter-list .item .bg .triangle svg {
-    height: 180px;
-    width: 180px;
+    height: 152px;
+    width: 152px;
 }
 
 .enter-list .item .bg .square svg {
@@ -640,6 +640,18 @@ ul.skill li .progress div {
 
 .enter-list .item .bg .circle svg {
     animation: spin-icon 20s linear infinite;
+}
+
+.enter-list .item .bg .bubble svg {
+    animation: spin-icon 25s linear infinite;
+}
+
+/* 一行放不下四块时改成 2 × 2 */
+@media screen and (max-width: 1000px) {
+    .enter-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 560px;
+    }
 }
 
 @keyframes spin-icon {
@@ -761,10 +773,16 @@ ul.skill li .progress div {
         white-space: normal;
         display: block;
     }
+    .enter-list {
+        gap: 14px;
+        max-width: 420px;
+    }
     .enter-list .item {
-        width: min(100%, 420px);
-        margin: 0 0 20px;
-        height: 100px;
+        height: 96px;
+    }
+    .enter-list .item .bg svg {
+        height: 104px;
+        width: 104px;
     }
     .footer p {
         letter-spacing: .2em;
@@ -791,7 +809,8 @@ a:focus-visible,
 
     .enter-list .item .bg .square svg,
     .enter-list .item .bg .triangle svg,
-    .enter-list .item .bg .circle svg {
+    .enter-list .item .bg .circle svg,
+    .enter-list .item .bg .bubble svg {
         animation: none !important;
     }
 

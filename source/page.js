@@ -561,6 +561,7 @@ function applySiteConfig(config){
     applyEntry("entry-blog", "entry-blog-text", config.entries.blog);
     applyEntry("entry-running", "entry-running-text", config.entries.running);
     applyEntry("entry-photo", "entry-photo-text", config.entries.photo);
+    applyEntry("entry-memos", "entry-memos-text", config.entries.memos);
   }
 
   if (config.footer) {

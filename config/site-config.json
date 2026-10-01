@@ -73,6 +73,14 @@
     "running": {
       "label": "跑步轨迹",
       "url": "https://run.gxy.plus"
+    },
+    "photo": {
+      "label": "光迹",
+      "url": "https://photo.gxy.plus"
+    },
+    "memos": {
+      "label": "絮语",
+      "url": "https://memos.gxy.plus"
     }
   },
   "footer": {

@@ -7,7 +7,7 @@
 - `site`: 页面基础信息
 - `profile.readme`: 顶部介绍文案
 - `socialLinks`: 社交链接列表
-- `entries`: 下方入口卡片（博客/跑步）
+- `entries`: 下方入口卡片（博客/跑步/摄影/碎碎念）
 - `footer`: 页脚链接
 - `slogans`: 顶部随机大标题文案（`#slogan`）
 - `tags`: Roll 标签池
@@ -59,6 +59,8 @@
 
 - `entries.blog.label` / `entries.blog.url`: 博客卡片
 - `entries.running.label` / `entries.running.url`: 跑步卡片
+- `entries.photo.label` / `entries.photo.url`: 摄影卡片
+- `entries.memos.label` / `entries.memos.url`: 碎碎念卡片（同步自 Telegram 频道）
 
 ### `footer`
 
