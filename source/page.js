@@ -375,7 +375,7 @@ const DEFAULT_SITE_CONFIG = {
   ],
   entries: {
     blog: { label: "博客", url: "https://blog.gxy.plus" },
-    running: { label: "跑步轨迹", url: "https://run.gxy.plus" },
+    running: { label: "履痕", url: "https://run.gxy.plus" },
     photo: { label: "光迹", url: "https://photo.gxy.plus" },
   },
   footer: {
